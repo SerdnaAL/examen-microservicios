@@ -1,0 +1,33 @@
+# =====================================================================
+#  api-gateway  ·  PERFIL POR DEFECTO (local)
+# =====================================================================
+server:
+  port: 8080
+
+spring:
+  cloud:
+    gateway:
+      routes:
+        - id: auth-service
+          uri: lb://auth-service
+          predicates:
+            - Path=/api/v1/auth/**
+
+        - id: personas-service
+          uri: lb://personas-service
+          predicates:
+            - Path=/api/v1/personas/**
+
+        - id: solicitudes-service
+          uri: lb://solicitudes-service
+          predicates:
+            - Path=/api/v1/solicitudes/**
+
+        - id: notificaciones-service
+          uri: lb://notificaciones-service
+          predicates:
+            - Path=/api/v1/notificaciones/**
+
+jwt:
+  secret: DzbdiUOkvzu1NAVG3MwSQPS9LkYLUfjWJCybgOv50sxQcwrNaFepVVQD06PcndJ8
+
